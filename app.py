@@ -1,13 +1,23 @@
 import streamlit as st
 import pickle
 import string
-from nltk.corpus import stopwords
-import nltk
-from nltk.stem.porter import PorterStemmer
 from datetime import datetime
 import pandas as pd
 import time
 import random
+import nltk
+
+# Download NLTK data at startup
+@st.cache_resource
+def download_nltk_data():
+    nltk.download('punkt', quiet=True)
+    nltk.download('punkt_tab', quiet=True)
+    nltk.download('stopwords', quiet=True)
+
+download_nltk_data()
+
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
 
 ps = PorterStemmer()
 
